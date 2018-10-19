@@ -1,3 +1,6 @@
 [submodule "library"]
 	path = library
 	url = git@github.com:ac-voyage/library.git
+[submodule "template"]
+	path = template
+	url = git@github.com:ac-voyage/template.git
