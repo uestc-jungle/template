@@ -16,3 +16,4 @@ pdf: main.tex
 
 clean:
 	rm -f *.aux *.log *.out *.toc
+	
