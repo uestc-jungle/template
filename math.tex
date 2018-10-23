@@ -46,6 +46,50 @@ then the solution is
 \subsection{NTT}
 \lstinputlisting{"./template/math/ntt.cc"}
 
+\subsection{Fast Walsh–Hadamard transform}
+\begin{itemize}
+\item 异或
+$$
+\mathcal{F}\{A\} =
+\left[\mathcal{F}\{A_0\}+\mathcal{F}\{A_1\},
+\mathcal{F}\{A_0\}-\mathcal{F}\{A_1\}\right]
+$$
+$$
+\mathcal{F}^{-1}\{A\} =
+\left[
+\mathcal{F}^{-1}\{\frac{A_0+A_1}{2}\},
+\mathcal{F}^{-1}\{\frac{A_0-A_1}{2}\}
+\right]
+$$
+\item 按位与
+$$
+\mathcal{F}\{A\} =
+\left[\mathcal{F}\{A_0\}+\mathcal{F}\{A_1\},
+\mathcal{F}\{A_1\}\right]
+$$
+$$
+\mathcal{F}^{-1}\{A\} =
+\left[
+\mathcal{F}^{-1}\{A_0\}-\mathcal{F}^{-1}\{A_1\},
+\mathcal{F}^{-1}\{A_1\}
+\right]
+$$
+\item 按位或
+$$
+\mathcal{F}\{A\} =
+\left[\mathcal{F}\{A_0\},
+\mathcal{F}\{A_1\}+\mathcal{F}\{A_0\}\right]
+$$
+$$
+\mathcal{F}^{-1}\{A\} =
+\left[
+\mathcal{F}^{-1}\{A_0\},
+\mathcal{F}^{-1}\{A_1\}-\mathcal{F}^{-1}\{A_0\}
+\right]
+$$
+\end{itemize}
+\lstinputlisting{"./template/math/fwt.cc"}
+
 \subsection{Lucas}
 \lstinputlisting{"./library/math/lucas.cc"}
 
