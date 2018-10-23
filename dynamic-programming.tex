@@ -30,3 +30,23 @@ $s_3 = \{ 6, 2, 7, 3, 1, 6, 2, 5, 1 \}$.
 
 \subsection{Improved by Slope}
 \lstinputlisting{"./template/dp/slope.cc"}
+
+\subsection{Steiner Tree}
+令 $f[i][sta]$ 表示 $i$ 号节点，
+与其他节点的连通性为 $sta$ 时的最小代价，
+这里 $sta$ 是一个二进制数，
+在它二进制下的每一位中，$0$ 表示不连通，$1$ 表示联通
+
+状态转移：
+\begin{itemize}
+    \item 由子集转移而来
+    \[
+        f[i][sta] = \min_{s \subseteq sta}\{f[i][s] + f[i][sta \setminus s] - val[i]\}
+    \]
+    \item 由不含该节点的状态转移而来
+    \[
+        f[i][j] = \min\{f[k][j] + val[i]\}
+    \]
+\end{itemize}
+
+\lstinputlisting{"./template/dp/steiner-tree.cc"}
