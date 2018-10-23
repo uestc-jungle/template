@@ -35,3 +35,9 @@ Version 2
 
 \subsection{Strongly Connected Component}
 \lstinputlisting{"./template/graph/scc.cc"}
+
+\subsection{Perfect elimination ordering}
+求弦图的最大团数/最小色数的时候，只要在完美消除序列上从后往前贪心染色即可。
+ 
+而求最大独立集/最小团覆盖的时候，只要在完美消除序列上从前往后贪心取点即可。
+\lstinputlisting{"./template/graph/perfect-elimination-ordering.cc"}
