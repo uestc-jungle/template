@@ -6,20 +6,45 @@
 \subsection{Möbius Function}
 \lstinputlisting{"./template/math/mobius.cc"}
 
+\subsection{Number Theory Inverse}
+\lstinputlisting{"./template/math/inv.cc"}
+
 \subsection{Chinese Remainder Theorem}
 \[
 	x \equiv a_i \quad (\mathrm{mod}\;m_i)
 \]
 \lstinputlisting{"./template/math/crt.c"}
 
+\subsection{Linear congruences}
+\lstinputlisting{"./library/math/mod_equ.cc"}
+Usage:
+For
+\[
+\left\{
+    \begin{array}{l}
+    x \equiv a_1 \mod m_1 \\
+    x \equiv a_2 \mod m_2 \\
+    \vdots \\
+    x \equiv a_k \mod m_k \\
+    \end{array}
+\right.
+\]
+run
+\begin{lstlisting}
+mod_equ_resolver solver;
+for (int i = 1; i <= k; i++)
+    solver.onemore(a[i], m[i]);
+\end{lstlisting}
+then the solution is
+\[
+    x \equiv solver.a \mod solver.m
+\]
+
 \subsection{FFT}
 \lstinputlisting{"./template/math/fft.cc"}
 
 \subsection{DFT}
 % TODO:
-
-\subsection{Number Theory Inverse}
-\lstinputlisting{"./template/math/inv.cc"}
 
 \subsection{Lucas}
 \lstinputlisting{"./library/math/lucas.cc"}
