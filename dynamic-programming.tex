@@ -49,4 +49,18 @@ $s_3 = \{ 6, 2, 7, 3, 1, 6, 2, 5, 1 \}$.
     \]
 \end{itemize}
 
+流程：
+\begin{lstlisting}
+枚举状态集S 
+{ 
+     枚举S的子集s 
+     { 
+         更新f[S][1~n] 
+     } 
+     将 f[S][x]<inf 的x入队 
+     spfa(S) 
+}
+\end{lstlisting}
+
+代码：
 \lstinputlisting{"./template/dp/steiner-tree.cc"}
