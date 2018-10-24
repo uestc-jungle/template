@@ -108,3 +108,20 @@ $$
 
 \subsection{Berlekamp Massey}
 \lstinputlisting{"./library/math/berlekamp-massey.cc"}
+
+\subsection{Lindström–Gessel–Viennot lemma}
+对于一张无边权的 DAG 图，
+给定 $n$ 个起点和对应的 $n$ 个终点，
+这 $n$ 条不相交路径的方案数为
+\[
+\left|
+\begin{array}{cccc}
+e(a_1, b_1) & e(a_1, b_2) & \cdots & e(a_1, b_n) \\
+e(a_2, b_1) & e(a_2, b_2) & \cdots & e(a_2, b_n) \\
+\vdots & \vdots & \ddots & \vdots \\
+e(a_n, b_1) & e(a_n, b_2) & \cdots & e(a_n, b_n)
+\end{array}
+\right|
+\quad (\text{该矩阵的行列式})
+\]
+其中 $e(a,b)$ 为图上 $a$ 到 $b$ 的方案数.
