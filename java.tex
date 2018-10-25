@@ -1,4 +1,169 @@
 \subsection{Java Reference}
 
-\subsubsection{Basic Structure}
+\subsubsection{Basic}
+
+Structure
 \lstinputlisting{"./java/Main.java"}
+
+Constant
+\begin{lstlisting}
+    public static final int A = 0;
+\end{lstlisting}
+
+Array
+\begin{lstlisting}
+    int [] a = new int[5];
+    int [] b = {10, 35, 45, 89, 90};
+\end{lstlisting}
+
+\textbf{Bit op}
+
+The Java programming language also provides operators that perform bitwise and bit shift operations on integral types. The operators discussed in this section are less commonly used. Therefore, their coverage is brief; the intent is to simply make you aware that these operators exist.
+
+The unary bitwise complement operator ``$\sim$'' inverts a bit pattern; it can be applied to any of the integral types, making every ``0'' a ``1'' and every ``1'' a ``0''. For example, a byte contains 8 bits; applying this operator to a value whose bit pattern is ``00000000'' would change its pattern to ``11111111''.
+
+The signed left shift operator ``$<<$'' shifts a bit pattern to the left, and the signed right shift operator ``$>>$'' shifts a bit pattern to the right. The bit pattern is given by the left-hand operand, and the number of positions to shift by the right-hand operand. The unsigned right shift operator ``$>>>$'' shifts a zero into the leftmost position, while the leftmost position after ``$>>$'' depends on sign extension.
+
+The bitwise \& operator performs a bitwise AND operation.
+
+The bitwise $\^$ operator performs a bitwise exclusive OR operation.
+
+The bitwise | operator performs a bitwise inclusive OR operation.
+
+\subsubsection{BigInteger}
+
+Immutable arbitrary-precision integers. All operations behave as if BigIntegers were represented in two's-complement notation (like Java's primitive integer types). BigInteger provides analogues to all of Java's primitive integer operators, and all relevant methods from java.lang.Math. Additionally, BigInteger provides operations for modular arithmetic, GCD calculation, primality testing, prime generation, bit manipulation, and a few other miscellaneous operations.
+
+\textbf{API}
+\begin{itemize}
+\item ZERO, ONE, TEN
+
+\item Constructors
+\begin{lstlisting}
+public BigInteger(String val, int radix)
+\end{lstlisting}
+
+\item primes
+\begin{lstlisting}
+/* prob of composite <= 2^(-100) */
+public BigInteger nextProbablePrime() 
+/* return true if the probability that it is prime exceeds (1 - 1/(2^certainty)) */
+public boolean isProbablePrime(int certainty)
+\end{lstlisting}
+
+\item valueOf
+
+\item 算术运算
+\begin{lstlisting}
+public BigInteger add(BigInteger val)
+public BigInteger subtract(BigInteger val)
+public BigInteger multiply(BigInteger val)
+public BigInteger divide(BigInteger val)
+public BigInteger[] divideAndRemainder(BigInteger val) // [quotient, remainder]
+public BigInteger remainder(BigInteger val)
+public BigInteger pow(int exponent)
+public BigInteger gcd(BigInteger val)
+public BigInteger abs()
+public BigInteger negate()
+public int signum() // -1, 0 or 1
+public BigInteger mod(BigInteger m) // always returns a non-negative BigInteger.
+public BigInteger modPow(BigInteger exponent, BigInteger m)
+public BigInteger modInverse(BigInteger m)
+\end{lstlisting}
+
+\item 位运算
+\begin{lstlisting}
+public BigInteger shiftLeft(int n)
+public BigInteger shiftRight(int n)
+public BigInteger and(BigInteger val)
+public BigInteger or(BigInteger val)
+public BigInteger xor(BigInteger val)
+public BigInteger not()
+public boolean testBit(int n)
+public BigInteger setBit(int n)
+public BigInteger clearBit(int n)
+public BigInteger flipBit(int n)
+public int getLowestSetBit() // lowbit
+public int bitLength()
+public int bitCount()
+\end{lstlisting}
+
+\item 比较
+\begin{lstlisting}
+public int compareTo(BigInteger val) // -1, 0 or 1 if this () val
+public BigInteger min(BigInteger val)
+public BigInteger max(BigInteger val)
+\end{lstlisting}
+
+\item transform
+\begin{lstlisting}
+public int hashCode()
+public String toString(int radix)
+public int intValue()
+public long longValue()
+\end{lstlisting}
+\end{itemize}
+
+\subsubsection{BigDecimal}
+
+Immutable, arbitrary-precision signed decimal numbers.
+A BigDecimal consists of an arbitrary precision integer unscaled value and a 32-bit integer scale.
+If zero or positive, the scale is the number of digits to the right of the decimal point.
+If negative, the unscaled value of the number is multiplied by ten to the power of the negation of the scale.
+The value of the number represented by the BigDecimal is therefore ($unscaledValue \times 10^{-scale}$).
+
+\textbf{API}
+\begin{itemize}
+\item Constructors
+\begin{lstlisting}
+public BigDecimal(String val)
+public BigDecimal(double val)
+public BigDecimal(BigInteger val)
+public BigDecimal(int val)
+public static BigDecimal valueOf(long unscaledVal, int scale) // u * 10^(-scale)
+public static BigDecimal valueOf(double val)
+\end{lstlisting}
+
+\item arithmetic operation
+\begin{lstlisting}
+public BigDecimal add(BigDecimal augend)
+public BigDecimal subtract(BigDecimal subtrahend)
+public BigDecimal multiply(BigDecimal multiplicand)
+public BigDecimal divide(BigDecimal divisor)
+public BigDecimal divideToIntegralValue(BigDecimal divisor)
+public BigDecimal remainder(BigDecimal divisor)
+public BigDecimal[] divideAndRemainder(BigDecimal divisor)
+public BigDecimal pow(int n)
+public BigDecimal abs()
+public BigDecimal negate()
+public int signum()
+public int scale()
+public int precision()
+\end{lstlisting}
+
+\item transform
+\begin{lstlisting}
+// RoundingMode.
+//    UP, DOWN, CEILING, FLOOR, HALF_UP, HALF_DOWN, HALF_EVEN
+public MathContext(int setPrecision[, RoundingMode setRoundingMode])
+public BigDecimal round(MathContext mc)
+public int hashCode()
+public String toString()
+public String toPlainString()
+public double doubleValue()
+\end{lstlisting}
+
+\item comparison
+\begin{lstlisting}
+public int compareTo(BigDecimal val)
+public BigDecimal min(BigDecimal val)
+public BigDecimal max(BigDecimal val)
+\end{lstlisting}
+\end{itemize}
+
+\subsubsection{Sorting}
+java.util.Arrays
+\begin{lstlisting}
+public static void sort(int[] a[, int fromIndex, int toIndex]) // ascending numerical order.
+// or parallelSort ?
+\end{lstlisting}
