@@ -1,3 +1,64 @@
 \subsection{C++ Reference}
 
+\subsubsection{Debug}
+\begin{lstlisting}
+#ifdef JDEBUGMODE
+#define jdebug(format, ...) fprintf(stderr, "L%d: " format, __LINE__, __VA_ARGS__)
+#define jshow(...) fprintf(stderr, "%s\n", #__VA_ARGS__)
+#else
+#define jdebug(...) (void (0))
+#define jshow(...) (void (0))
+#endif
+\end{lstlisting}
+
 \subsubsection{STL}
+
+\textbf{bitset}
+\begin{lstlisting}
+template <size_t N> class bitset;
+\end{lstlisting}
+
+access
+\begin{description}
+    \item[count] Count bits set
+    \item[test] Return bit value
+    \item[any] Test if any bit is set
+    \item[none] Test if no bit is set
+    \item[all] Test if all bits are set
+\end{description}
+operations
+\begin{description}
+    \item[set] Set bits 1
+    \item[reset] Reset bits 0
+    \item[flip] Flip bits
+    \item[to\_string]
+    \item[to\_ullong] to unsigned long long
+\end{description}
+
+could be used for unordered\_set or unordered\_map
+\begin{lstlisting}
+template <class T> struct hash;              // unspecialized
+template <size_t N> struct hash<bitset<N>>;  // bitset specializatio
+\end{lstlisting}
+
+\textbf{unordered\_map}
+相对于 \verb|map|，插入慢，查询快.
+
+\textbf{multiset}
+对于 \verb|erase| 操作，
+如果传值进去，会把所有该值的元素删去；
+如果传迭代器，则只删一个元素。
+
+\textbf{other}
+\begin{lstlisting}
+template <class InputIterator1, class InputIterator2>
+  bool includes ( InputIterator1 first1, InputIterator1 last1,
+                  InputIterator2 first2, InputIterator2 last2 );
+
+template <class InputIterator1, class InputIterator2, class Compare>
+  bool includes ( InputIterator1 first1, InputIterator1 last1,
+                  InputIterator2 first2, InputIterator2 last2, Compare comp );
+
+auto il = { 10, 20, 30 };  // the type of il is an initializer_list 
+
+\end{lstlisting}
